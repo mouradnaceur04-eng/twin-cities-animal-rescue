@@ -1,0 +1,595 @@
+/* ==========================================================================
+   Twin Cities Animal Rescue — styles.css
+   Mobile-first stylesheet. Base styles target small screens; the single
+   media query at the bottom adjusts layout for screens 800px and wider.
+
+   Color palette (4 colors):
+     --green   #2E6B4F  forest green  — trust, calm, primary brand color
+     --amber   #E8A33D  warm amber    — hope, energy, calls to action
+     --cream   #FAF7F2  soft cream    — page background, easy on the eyes
+     --ink     #2B2B2B  charcoal      — body text, strong contrast on cream
+
+   Typography (2 font families):
+     Nunito        — headings, nav, buttons (rounded, friendly, hopeful)
+     Source Sans 3 — body text, forms (clean, highly readable)
+   ========================================================================== */
+
+:root {
+  --green: #2E6B4F;
+  --amber: #E8A33D;
+  --cream: #FAF7F2;
+  --ink: #2B2B2B;
+  --font-heading: "Nunito", "Trebuchet MS", Arial, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ---------- Base / reset ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+a {
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover,
+a:focus {
+  color: var(--amber);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* ---------- Typography ---------- */
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: var(--green);
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: 1.9rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-bottom: 0.3rem;
+  border-bottom: 3px solid var(--amber);
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul,
+ol {
+  padding-left: 1.4rem;
+  margin: 0 0 1rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+strong {
+  color: var(--green);
+}
+
+/* ---------- Header ---------- */
+
+header {
+  background-color: var(--green);
+  color: var(--cream);
+  padding: 1.25rem 1rem 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+header img {
+  width: 90px;
+  border-radius: 50%;
+  background-color: var(--cream);
+  padding: 6px;
+}
+
+header h1 {
+  color: var(--cream);
+  margin: 0;
+}
+
+header p {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* ---------- Navigation (shared by header and footer) ---------- */
+
+nav ul {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--cream);
+  background-color: rgba(250, 247, 242, 0.12);
+  padding: 0.6rem 1rem;
+  border-radius: 6px 6px 0 0;
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: var(--amber);
+  color: var(--ink);
+}
+
+nav a[aria-current="page"] {
+  background-color: var(--cream);
+  color: var(--green);
+}
+
+/* ---------- Main content ---------- */
+
+main {
+  padding: 1.5rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+section {
+  background-color: #ffffff;
+  border: 1px solid rgba(46, 107, 79, 0.15);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Sections that pair text with an image stack on mobile,
+   then sit side by side on wider screens (see media query). */
+section:has(> img),
+section:has(> figure) {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+section > img,
+figure img {
+  width: 100%;
+  max-width: 420px;
+  align-self: center;
+}
+
+figure {
+  margin: 0;
+  background-color: var(--cream);
+  border-left: 5px solid var(--amber);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+figcaption {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+picture img {
+  width: 100%;
+  max-width: 100%;
+}
+
+video {
+  width: 100%;
+  background-color: var(--ink);
+}
+
+/* Description lists (volunteer roles, core values) */
+
+dl {
+  margin: 0;
+}
+
+dt {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--green);
+  margin-top: 1rem;
+}
+
+dd {
+  margin: 0.25rem 0 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--amber);
+}
+
+/* Impact statistics on the home page */
+
+#impact-heading + p + ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+#impact-heading + p + ul li {
+  flex: 1 1 100%;
+  background-color: var(--cream);
+  border-top: 4px solid var(--amber);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  margin: 0;
+}
+
+#impact-heading + p + ul strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  line-height: 1.1;
+}
+
+/* Address and tables */
+
+address {
+  font-style: normal;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: var(--cream);
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+caption {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-align: left;
+  color: var(--green);
+  padding-bottom: 0.5rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid rgba(46, 107, 79, 0.2);
+}
+
+thead th {
+  background-color: var(--green);
+  color: var(--cream);
+}
+
+/* ---------- Form ---------- */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+fieldset {
+  border: 2px solid var(--green);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+legend {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--green);
+  padding: 0 0.5rem;
+}
+
+form p {
+  margin: 0 0 0.75rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.6rem 0.75rem;
+  margin-top: 0.3rem;
+  border: 1px solid #8a8a8a;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--ink);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-right: 0.5rem;
+  accent-color: var(--green);
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  font-weight: 400;
+}
+
+button {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+button[type="submit"] {
+  background-color: var(--amber);
+  color: var(--ink);
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background-color: var(--green);
+  color: var(--cream);
+}
+
+button[type="reset"] {
+  background-color: transparent;
+  color: var(--green);
+  border: 2px solid var(--green);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  background-color: var(--ink);
+  color: var(--cream);
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+footer a {
+  color: var(--amber);
+}
+
+footer nav a {
+  background-color: transparent;
+  border-radius: 6px;
+}
+
+/* ==========================================================================
+   Media query: screens 800px and wider
+   ========================================================================== */
+
+@media (min-width: 800px) {
+  body {
+    font-size: 1.125rem;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  h2 {
+    font-size: 1.85rem;
+  }
+
+  /* Header becomes a horizontal bar: logo + title left, nav right */
+  header {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 1.25rem 2rem 0;
+    gap: 1rem 1.5rem;
+  }
+
+  header p {
+    flex-basis: 100%;
+    order: 3;
+    margin-top: -0.5rem;
+  }
+
+  nav ul {
+    width: auto;
+    justify-content: flex-end;
+    margin: 0;
+  }
+
+  header nav {
+    order: 2;
+    margin-left: auto;
+  }
+
+  header nav ul {
+    align-self: flex-end;
+  }
+
+  main {
+    padding: 2.5rem 2rem;
+  }
+
+  section {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Text + image sections sit side by side */
+  section:has(> img),
+  section:has(> figure) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  section:has(> img) > h2,
+  section:has(> figure) > h2 {
+    flex-basis: 100%;
+  }
+
+  section:has(> img) > p,
+  section:has(> img) > ol,
+  section:has(> img) > ul,
+  section:has(> img) > dl,
+  section:has(> figure) > p,
+  section:has(> figure) > ol {
+    flex: 1 1 55%;
+  }
+
+  section > img,
+  section > figure {
+    flex: 0 1 38%;
+    align-self: flex-start;
+  }
+
+  /* Volunteer Roles: intro paragraph spans the row, then the role list
+     and the volunteer photo share the next row */
+  #volunteer > p:first-of-type {
+    flex-basis: 100%;
+  }
+
+  #volunteer > img {
+    order: 2;
+  }
+
+  #volunteer > dl {
+    order: 1;
+    flex: 1 1 55%;
+  }
+
+  #volunteer > p:last-of-type {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  /* Impact stats: five tiles in a row */
+  #impact-heading + p + ul li {
+    flex: 1 1 160px;
+  }
+
+  /* Form: name/email and interest/availability can share a row */
+  fieldset {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 1.5rem;
+  }
+
+  fieldset > p {
+    flex: 1 1 45%;
+  }
+
+  fieldset > p:has(textarea),
+  fieldset > p:has(input[type="radio"]),
+  fieldset > p:has(input[type="checkbox"]) {
+    flex-basis: 100%;
+  }
+
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 1.5rem 2rem;
+  }
+
+  footer nav {
+    flex-basis: 100%;
+    margin-top: 0.5rem;
+  }
+
+  footer nav ul {
+    justify-content: flex-start;
+  }
+}
