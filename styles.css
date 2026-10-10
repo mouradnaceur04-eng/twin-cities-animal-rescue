@@ -447,6 +447,108 @@ footer nav a {
   border-radius: 6px;
 }
 
+/* ---------- Touchstone 4: interactive feature, validation, storage ---------- */
+
+.interest-btn {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.95rem;
+  background-color: transparent;
+  color: var(--green);
+  border: 2px solid var(--green);
+}
+
+.interest-btn:hover,
+.interest-btn:focus {
+  background-color: var(--green);
+  color: var(--cream);
+}
+
+.interest-btn.is-selected {
+  background-color: var(--amber);
+  border-color: var(--amber);
+  color: var(--ink);
+}
+
+.interest-summary {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--cream);
+  border: 2px solid var(--amber);
+  border-radius: 10px;
+}
+
+.interest-summary h3 {
+  margin-top: 0;
+}
+
+.interest-list {
+  list-style: none;
+  padding: 0;
+}
+
+.interest-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(46, 107, 79, 0.2);
+}
+
+.commitment {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.remove-btn,
+.link-btn {
+  margin-left: auto;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.85rem;
+  background-color: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.link-btn {
+  margin-left: 1rem;
+}
+
+.cta-link {
+  font-family: var(--font-heading);
+  font-weight: 800;
+}
+
+.saved-note {
+  padding: 0.75rem 1rem;
+  background-color: var(--cream);
+  border-left: 5px solid var(--amber);
+  border-radius: 6px;
+}
+
+.error-message {
+  display: block;
+  min-height: 1.2em;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #A32D2D;
+}
+
+.is-invalid {
+  border-color: #A32D2D !important;
+  background-color: #FFF4F4 !important;
+}
+
+.success-message {
+  padding: 1.25rem;
+  background-color: var(--cream);
+  border: 2px solid var(--green);
+  border-radius: 10px;
+}
+
 /* ==========================================================================
    Media query: screens 800px and wider
    ========================================================================== */
@@ -548,8 +650,13 @@ footer nav a {
     flex: 1 1 55%;
   }
 
-  #volunteer > p:last-of-type {
+  #volunteer > .interest-summary {
     order: 3;
+    flex-basis: 100%;
+  }
+
+  #volunteer > p:last-of-type {
+    order: 4;
     flex-basis: 100%;
   }
 
